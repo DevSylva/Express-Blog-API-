@@ -1,18 +1,9 @@
 const User = require("../models/user")
+const {registerValidation} = require("../utils/validation")
 
-
-// validation
-const Joi = require("@hapi/joi");
-
-
-const schema = Joi.object({
-  name: Joi.string().min(6).required(),
-  email: Joi.string().min(6).required().email(),
-  password: Joi.string().min(6).required(),
-});
 
 exports.register = async (req, res) => {
-    const validation = schema.validate(req.body)
+    const validation = registerValidation(req.body)
     try {
       if (validation["error"]) {
         res.send(validation["error"].details[0].message);
