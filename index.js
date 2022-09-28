@@ -21,6 +21,9 @@ app.use(cors());
 // route middlewares
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello")
+})
 
 const PORT = process.env.PORT || 5000;
 
