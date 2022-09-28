@@ -22,7 +22,10 @@ app.use(cors());
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
-  res.send("Hello")
+  res.json({
+    author: "devSylva",
+    project: "Simple Blog API with JWT auth"
+  })
 })
 
 const PORT = process.env.PORT || 5000;
